@@ -1,0 +1,7 @@
+cluster_lightning_best_no_clusters.R
+    Evaluates the best number of cluster using three different methodologies.
+    It clusters based on 25% of the observations of the ERA environmental
+    variables over the continent to find the representative environmental
+    conditions for each cluster over the entire continent.
+    It output a graph of the wss ditance and the variance explained to
+    determine an optimal number of clusters.

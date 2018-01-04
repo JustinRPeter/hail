@@ -1,0 +1,23 @@
+# Ignore all output graphics
+*.png
+*.pdf
+
+#Ignore all output statistics
+*.txt
+
+#Ignore the R data and history files
+.RData
+.Rhistory
+
+#Ignore the R data files
+*.rds
+*.rda
+
+#Ignore HPC output
+*.e*
+*.o*
+*.qsub
+
+#Ignore some data files
+*.nc
+
