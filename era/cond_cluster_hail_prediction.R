@@ -17,6 +17,22 @@ library(oce)
 library(ncdf4)
 
 
+###############################################################################
+#(1) Read the cluster prediction file output from
+#cluster_lightning_prediction.R
+cls.pred <- readRDS("pred_test_all_lightning_cclust_seg_cape_ex_vars_2008_2014_20clusters.rds")
+ncls <- length(levels(cls.pred))
+class(cls.pred) <- "numeric"
+
+#Apply the land sea mask to the cluster prediction data
+
+
+#Read the probability of lightning associated with each cluster
+prob.lightning <- readRDS("prop_lightning_all_seg_cape_ex_vars_2008_2014_20clusters.rds")
+
+
+
+
 raw.data <- read.table("hail_predictor.txt",
                    header=TRUE,
                    stringsAsFactors=FALSE)
