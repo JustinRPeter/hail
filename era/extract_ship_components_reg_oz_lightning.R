@@ -199,6 +199,7 @@ total_lightning <- total_lightning[seq(1,dim(total_lightning)[1],6),,]
 #In this version we randomly draw several grid boxes from Australia
 #Only extract those lats and lons which occur over land
 #Set the % of samples to use for the training data set
+#train.fraction <- 1.0
 train.fraction <- 0.9
 #train.fraction <- 0.7
 #train.fraction <- 0.5

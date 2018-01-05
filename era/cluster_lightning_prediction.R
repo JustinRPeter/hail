@@ -504,7 +504,8 @@ phd <- ggplot(hd.l,aes(cl,value,fill=c("prop.lightning")))+
 #fnm_era <- '/home/jpeter/justinp/rfiles/suncorp/data/eraint/sharpy_profiles/00_18/2008_2014/era_profiles_2008_2014_00_18.nc'
 #fnm_era <- '/home/u1066578/data/era_output/00_18/2008_2014/analysis/era_profiles_2008_2014_00_18.nc'
 #fnm_era <- '/home/u1066578/data/era_output/00_18/2008_2014/analysis/era_profiles_2008_2014_00_18.nc'
-fnm_era <- '/home/u1066578/data/era_output/00_18/1979_2014/analysis/era_profiles_1979_2014_00_18.nc'
+fnm_era <- '/home/jpeter/Documents/usq/data/era_profiles_2008_2014_00_18.nc'
+#fnm_era <- '/home/u1066578/data/era_output/00_18/1979_2014/analysis/era_profiles_1979_2014_00_18.nc'
 
 #Open the netcdf files
 nc_era   <- nc_open(fnm_era)
@@ -554,7 +555,8 @@ capl <- ncvar_get(nc_era,v9)
 nc_close(nc_era)
 
 #Evaluate the parcel mixing ratio
-source("/home/u1066578/jpeter/rfiles/lib/thermo/thermo.r")
+#source("/home/u1066578/jpeter/rfiles/lib/thermo/thermo.r")
+source("/home/jpeter/Documents/usq/rfiles/lib/thermo/thermo.r")
 pmrl <- r_mix_td(presl*100.,dwpcl+273.15)*1000.
 
 #Apply the same limits as the GPATS data to ERA data
@@ -577,7 +579,7 @@ pmr      <- pmrl[ex.lon,ex.lat,]
 cap      <- capl[ex.lon,ex.lat,]
 
 #Apply the land-sea mask
-fnm_lsmask <- '/home/u1066578/data/eraint/lsmask/era_interim_lsmask.nc'
+fnm_lsmask <- '/home/jpeter/Documents/usq/data/era_interim_lsmask.nc'
 nc_lsmask <- nc_open(fnm_lsmask)
 v8 <- nc_lsmask$var[["lsm"]]
 lsmask <- ncvar_get(nc_lsmask,v8)
@@ -691,8 +693,10 @@ dim(pred_test.f) <- c(nlon,nlat,ntime)
 #fptout <- paste0("pred_test_all_lightning_cclust_seg_cape",ncls,"clusters.rds")
 #fhpout <- paste0("prop_lightning_all_seg_cape",ncls,"clusters.rds")
 #The following for only using subset of vars (MUCAPE,S06,PMR)
-fptout <- paste0("pred_test_all_lightning_cclust_seg_cape_ex_vars",ncls,"clusters.rds")
-fhpout <- paste0("prop_lightning_all_seg_cape_ex_vars",ncls,"clusters.rds")
+fptout <- paste0("pred_test_all_lightning_cclust_seg_cape_ex_vars_2008_2014_",ncls,"clusters.rds")
+fhpout <- paste0("prop_lightning_all_seg_cape_ex_vars_2008_2014_",ncls,"clusters.rds")
+#fptout <- paste0("pred_test_all_lightning_cclust_seg_cape_ex_vars",ncls,"clusters.rds")
+#fhpout <- paste0("prop_lightning_all_seg_cape_ex_vars",ncls,"clusters.rds")
 saveRDS(pred_test.f,fptout)
 saveRDS(hd,fhpout)
 
